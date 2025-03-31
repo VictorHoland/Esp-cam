@@ -1,0 +1,34 @@
+/* Generated using tflite2c.py. Do not modify */
+
+#ifndef EDGE_VISAO_DEVKIT_{{ model_name|upper }}_H
+#define EDGE_VISAO_DEVKIT_{{ model_name|upper }}_H
+
+#include <cstddef>
+#include <cstdint>
+
+#include <tensorflow/lite/micro/micro_mutable_op_resolver.h>
+
+#define {{ model_name|upper }}_INPUT_LEN {{ input_details|length }}
+{% for i in range(input_details|length) %}
+#define {{ model_name|upper }}_INPUT_{{ i }}_SHAPE_LEN {{ input_details[i]['shape']|length - 1 }}
+{% for s in input_details[i]['shape'][1:] %}
+#define {{ model_name|upper }}_INPUT_{{ i }}_SHAPE_{{ loop.index - 1 }} {{ s }}
+{% endfor %}
+{% endfor %}
+
+#define {{ model_name|upper }}_OUTPUT_LEN {{ output_details|length }}
+{% for i in range(output_details|length) %}
+#define {{ model_name|upper }}_OUTPUT_{{ i }}_SHAPE_LEN {{ output_details[i]['shape']|length - 1 }}
+{% for s in output_details[i]['shape'][1:] %}
+#define {{ model_name|upper }}_OUTPUT_{{ i }}_SHAPE_{{ loop.index - 1 }} {{ s }}
+{% endfor %}
+{% endfor %}
+
+extern const size_t {{ model_name|lower }}_array_len;
+extern const uint8_t {{ model_name|lower }}_array[];
+
+TfLiteStatus {{ model_name|lower }}_register_operations();
+
+tflite::MicroOpResolver* {{ model_name|lower }}_get_resolver();
+
+#endif //EDGE_VISAO_DEVKIT_{{ model_name|upper }}_H

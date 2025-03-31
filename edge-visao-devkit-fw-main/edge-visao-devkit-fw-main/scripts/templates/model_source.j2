@@ -1,0 +1,30 @@
+#include "{{ model_name|lower }}.h"
+
+#include <tensorflow/lite/micro/all_ops_resolver.h>
+#include <tensorflow/lite/micro/micro_interpreter.h>
+#include <tensorflow/lite/micro/micro_mutable_op_resolver.h>
+#include <tensorflow/lite/micro/micro_error_reporter.h>
+#include <tensorflow/lite/schema/schema_generated.h>
+
+
+static tflite::MicroMutableOpResolver<{{ op_codes_len }}> {{ model_name|lower }}_resolver;
+
+TfLiteStatus {{ model_name|lower }}_register_operations() {
+    TfLiteStatus status = kTfLiteOk;
+    {% for op in op_codes %}
+    status = {{ model_name|lower }}_resolver.Add{{ op|camelcase }}();
+    if(status != kTfLiteOk)
+        return status;
+    {% endfor %}
+
+    return kTfLiteOk;
+}
+
+tflite::MicroOpResolver* {{ model_name|lower }}_get_resolver() {
+    return &{{ model_name|lower }}_resolver;
+}
+
+const size_t {{ model_name|lower }}_len = {{ model_len }};
+alignas(8) const uint8_t {{ model_name|lower }}_array[] = {
+        {{ model_array }}
+};

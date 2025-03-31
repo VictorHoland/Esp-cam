@@ -1,0 +1,276 @@
+menu "Edge Softex Vision Devkit"
+    menu "Wi-fi"
+        config SOFTEX_WIFI_MAXIMUM_RETRY
+            int "Maximum number of retry"
+            default 5
+        config SOFTEX_WIFI_SSID
+            string "Wi-fi SSID"
+        config SOFTEX_WIFI_PASSWORD
+            string "Wi-fi password"
+    endmenu
+
+    menu "Camera config"
+        config SOFTEX_CAMERA_PIN_PWDN
+            int "PWDN Pin"
+            range -1 39
+            default 17
+        config SOFTEX_CAMERA_PIN_RESET
+            int "Reset Pin"
+            range -1 39
+            default -1
+        config SOFTEX_CAMERA_PIN_XCLK
+            int "XCLK Pin"
+            range -1 39
+            default 13
+        config SOFTEX_CAMERA_PIN_SDA
+            int "SDA Pin"
+            range -1 39
+            default 21
+        config SOFTEX_CAMERA_PIN_SCL
+            int "SCL Pin"
+            range -1 39
+            default 20
+        config SOFTEX_CAMERA_PIN_D7
+            int "D7 Pin"
+            range -1 39
+            default 12
+        config SOFTEX_CAMERA_PIN_D6
+            int "D6 Pin"
+            range -1 39
+            default 11
+        config SOFTEX_CAMERA_PIN_D5
+            int "D5 Pin"
+            range -1 39
+            default 10
+        config SOFTEX_CAMERA_PIN_D4
+            int "D4 Pin"
+            range -1 39
+            default 5
+        config SOFTEX_CAMERA_PIN_D3
+            int "D3 Pin"
+            range -1 39
+            default 14
+        config SOFTEX_CAMERA_PIN_D2
+            int "D2 Pin"
+            range -1 39
+            default 19
+        config SOFTEX_CAMERA_PIN_D1
+            int "D1 Pin"
+            range -1 39
+            default 18
+        config SOFTEX_CAMERA_PIN_D0
+            int "D0 Pin"
+            range -1 39
+            default 9
+        config SOFTEX_CAMERA_PIN_VSYNC
+            int "VSYNC Pin"
+            range -1 39
+            default 6
+        config SOFTEX_CAMERA_PIN_HREF
+            int "HREF Pin"
+            range -1 39
+            default 4
+        config SOFTEX_CAMERA_PIN_PCLK
+            int "PCLK Pin"
+            range -1 39
+            default 2
+        config SOFTEX_CAMERA_XCLK_FREQ_HZ
+            int "XCLK Frequency (Hz)"
+            default 20000000
+        choice SOFTEX_CAMERA_PIXELFORMAT
+            bool "Pixel Format"
+            default SOFTEX_CAMERA_PIXFORMAT_GRAYSCALE
+
+            config SOFTEX_CAMERA_PIXFORMAT_RGB565
+                bool "RGB565"
+            config SOFTEX_CAMERA_PIXFORMAT_YUV422
+                bool "YUV422"
+            config SOFTEX_CAMERA_PIXFORMAT_YUV420
+                bool "YUV420"
+            config SOFTEX_CAMERA_PIXFORMAT_GRAYSCALE
+                bool "Grayscale"
+            config SOFTEX_CAMERA_PIXFORMAT_JPEG
+                bool "JPEG"
+            config SOFTEX_CAMERA_PIXFORMAT_RGB888
+                bool "RGB888"
+            config SOFTEX_CAMERA_PIXFORMAT_RAW
+                bool "RAW"
+            config SOFTEX_CAMERA_PIXFORMAT_RGB444
+                bool "RGB444"
+            config SOFTEX_CAMERA_PIXFORMAT_RGB555
+                bool "RGB555"
+        endchoice
+        choice SOFTEX_CAMERA_FRAMESIZE
+            bool "Frame Size"
+            default SOFTEX_CAMERA_FRAMESIZE_96X96
+
+            config SOFTEX_CAMERA_FRAMESIZE_96X96
+                bool "96x96"
+            config SOFTEX_CAMERA_FRAMESIZE_QQVGA
+                bool "QQVGA (160x120)"
+            config SOFTEX_CAMERA_FRAMESIZE_QCIF
+                bool "QCIF (176x144)"
+            config SOFTEX_CAMERA_FRAMESIZE_HQVGA
+                bool "HQVGA (240x176)"
+            config SOFTEX_CAMERA_FRAMESIZE_240X240
+                bool "240x240"
+            config SOFTEX_CAMERA_FRAMESIZE_QVGA
+                bool "QVGA (320x240)"
+            config SOFTEX_CAMERA_FRAMESIZE_CIF
+                bool "CIF (400x296)"
+            config SOFTEX_CAMERA_FRAMESIZE_HVGA
+                bool "HVGA (480x320)"
+            config SOFTEX_CAMERA_FRAMESIZE_VGA
+                bool "VGA (640x480)"
+            config SOFTEX_CAMERA_FRAMESIZE_SVGA
+                bool "SVGA (800x600)"
+            config SOFTEX_CAMERA_FRAMESIZE_XGA
+                bool "XGA (1024x768)"
+            config SOFTEX_CAMERA_FRAMESIZE_HD
+                bool "HD (1280x720)"
+            config SOFTEX_CAMERA_FRAMESIZE_SXGA
+                bool "SXGA (1280x1024)"
+            config SOFTEX_CAMERA_FRAMESIZE_UXGA
+                bool "UXGA (1600x1200)"
+        endchoice
+        choice SOFTEX_CAMERA_LEDC_TIMER
+            bool "LEDC Timer"
+            default SOFTEX_CAMERA_LEDC_TIMER_0
+
+            config SOFTEX_CAMERA_LEDC_TIMER_0
+                bool "LEDC Timer 0"
+            config SOFTEX_CAMERA_LEDC_TIMER_1
+                bool "LEDC Timer 1"
+            config SOFTEX_CAMERA_LEDC_TIMER_2
+                bool "LEDC Timer 2"
+            config SOFTEX_CAMERA_LEDC_TIMER_3
+                bool "LEDC Timer 3"
+        endchoice
+        choice SOFTEX_CAMERA_LEDC_CHANNEL
+            bool "LEDC Channel"
+            default SOFTEX_CAMERA_LEDC_CHANNEL_0
+
+            config SOFTEX_CAMERA_LEDC_CHANNEL_0
+                bool "LEDC Channel 0"
+            config SOFTEX_CAMERA_LEDC_CHANNEL_1
+                bool "LEDC Channel 1"
+            config SOFTEX_CAMERA_LEDC_CHANNEL_2
+                bool "LEDC Channel 2"
+            config SOFTEX_CAMERA_LEDC_CHANNEL_3
+                bool "LEDC Channel 3"
+            config SOFTEX_CAMERA_LEDC_CHANNEL_4
+                bool "LEDC Channel 4"
+            config SOFTEX_CAMERA_LEDC_CHANNEL_5
+                bool "LEDC Channel 5"
+            config SOFTEX_CAMERA_LEDC_CHANNEL_6
+                bool "LEDC Channel 6"
+            config SOFTEX_CAMERA_LEDC_CHANNEL_7
+                bool "LEDC Channel 7"
+        endchoice
+        config SOFTEX_CAMERA_JPEG_QUALITY
+            int "JPEG Quality"
+            default 12
+        config SOFTEX_CAMERA_FB_COUNT
+            int "Framebuffer Count"
+            default 2
+        choice SOFTEX_CAMERA_FB_LOCATION
+            bool "Framebuffer location"
+            default SOFTEX_CAMERA_FB_IN_PSRAM
+
+            config SOFTEX_CAMERA_FB_IN_PSRAM
+               bool "Framebuffer in PSRAM"
+            config SOFTEX_CAMERA_FB_IN_DRAM
+               bool "Framebuffer in DRAM"
+        endchoice
+        choice SOFTEX_CAMERA_GRAB_MODE
+            bool "Grab mode"
+            default SOFTEX_CAMERA_GRAB_WHEN_EMPTY
+
+            config SOFTEX_CAMERA_GRAB_WHEN_EMPTY
+               bool "Grab when empty"
+            config SOFTEX_CAMERA_GRAB_LATEST
+               bool "Grab latest"
+        endchoice
+        config SOFTEX_CAMERA_CAPTURE_TASK_STACK_SIZE
+            int "Capture task stack size"
+            default 2048
+    endmenu
+
+
+    menu "Preprocessing"
+        config SOFTEX_TARGET_INPUT_WIDTH
+            int "Target input width"
+            default 96
+            range 1 2048
+
+        config SOFTEX_TARGET_INPUT_HEIGHT
+            int "Target input height"
+            default 96
+            range 1 2048
+    endmenu
+
+    menu "Tensorflow Lite Micro Settings"
+        config SOFTEX_TFLITE_MODEL_OUTPUT_LEN
+            int "Model output len"
+            default 1
+        config SOFTEX_TFLITE_PROCESS_TASK_STACK_SIZE
+            int "Process Task Stack Size"
+            default 4096
+        config SOFTEX_TFLITE_PROCESS_TASK_CORE
+            int "Process Task Core"
+            default 0
+    endmenu
+
+    menu "Output"
+        config SOFTEX_IO_TASK_STACK_SIZE
+            int "IO task stack size"
+            default 1024
+
+        menu "MQTT"
+            config SOFTEX_MQTT_HOST
+                string "MQTT host address"
+                default ""
+            config SOFTEX_MQTT_PORT
+                int "MQTT port number"
+                default 1883
+            config SOFTEX_MQTT_TOPIC
+                string "MQTT topic name"
+                default ""
+        endmenu
+
+        config SOFTEX_STREAMING_SUPPORT
+            bool "Streaming Support"
+            default yes
+
+        config SOFTEX_STREAMING_STACK_SIZE
+            int "Streaming Task Stack Size"
+            range 0 99999
+            default 2048
+
+        menu "Streaming Protocols Support"
+            depends on SOFTEX_STREAMING_SUPPORT
+            config SOFTEX_STREAMING_SUPPORT_HTTP
+                bool "HTTP Streaming Support"
+            config SOFTEX_STREAMING_SUPPORT_RTSP
+                bool "RTSP Streaming Support"
+            config SOFTEX_STREAMING_SUPPORT_CUSTOM
+                bool "Custom Streaming Support"
+        endmenu
+
+        menu "RTSP streaming settings"
+            depends on SOFTEX_STREAMING_SUPPORT_RTSP
+
+            config SOFTEX_STREAMING_RTSP_FRAMERATE
+                int "Framerate"
+                default 30
+
+            config SOFTEX_STREAMING_RTSP_MAX_ACTIVE_SESSIONS
+                int "Max active sessions"
+                default 5
+
+            config SOFTEX_STREAMING_RTSP_STACK_SIZE
+                int "Stack size"
+                default 2048
+        endmenu
+    endmenu
+endmenu
